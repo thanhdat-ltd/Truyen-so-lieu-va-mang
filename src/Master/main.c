@@ -23,7 +23,7 @@ int main(){
 	Lcd_Msg("Data: ");
 	
 	//uint16_t Length_Data_Slave1 = 3;
-	uint8_t Data_Slave1[] = {0x01, 0x03, 0x05};
+	uint8_t Data_Slave1[] = {0x01, 0x09, 0x05};
 	
 	//uint16_t Length_Data_Slave2 = 3;
 	uint8_t Data_Slave2[] = {0x02, 0x04, 0x06};
