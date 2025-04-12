@@ -1,4 +1,4 @@
-#define ADDR_SLAVE1		0x01
+#define ADDR_SLAVE1     0x01
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
@@ -24,16 +24,20 @@ int main(){
 	PORTC &= ~(1 << PORTC0);
 	
 	while(1){
-		Modbus_Rec(ADDR_SLAVE1, &Data_Slave1,  Length_Data_Slave1);
-		PORTC &= ~(1 << PORTC0);
+		Modbus_Rec(ADDR_SLAVE1, &Data_Slave1, Length_Data_Slave1);
 		_delay_ms(100);
 		RS485_EN_Rec();
 		Lcd_Set_Cursor(10, 0);
 		Lcd_Msg("Rec");
 		Lcd_Set_Cursor(10, 1);
-		Lcd_Value((float)Data_Slave1);
-		if(Data_Slave1 == 0x01 || Data_Slave1 == 0x03 || Data_Slave1 == 0x05){
+		char temp[2] = {Data_Slave1, '\0'};
+		Lcd_Msg(temp);
+		
+		// So sánh v?i ký t?, thay ??i tùy m?c ?ích
+		if(Data_Slave1 == 'A' || Data_Slave1 == 'B' || Data_Slave1 == 'C'){
 			PORTC |= (1 << PORTC0);
+			} else {
+			PORTC &= ~(1 << PORTC0);
 		}
 	}
 }

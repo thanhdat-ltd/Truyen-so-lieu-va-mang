@@ -26,6 +26,7 @@ void Lcd_Enable();
 void Lcd_Send_Nibble(uint8_t Data);
 void Lcd_Send_Byte(uint8_t Data, uint8_t isData);
 void Lcd_Clear();
+void Lcd_Char(char ch);
 
 void Lcd_Init();
 void Lcd_Set_Cursor(uint8_t Col, uint8_t Row);

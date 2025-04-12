@@ -1,0 +1,754 @@
+
+GccApplication5.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000014  00800100  00000492  00000506  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000492  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  0000051a  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000054c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000108  00000000  00000000  0000058c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000013f4  00000000  00000000  00000694  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000ace  00000000  00000000  00001a88  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000959  00000000  00000000  00002556  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000002c8  00000000  00000000  00002eb0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000057d  00000000  00000000  00003178  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000c5f  00000000  00000000  000036f5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000120  00000000  00000000  00004354  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 e9       	ldi	r30, 0x92	; 146
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a4 31       	cpi	r26, 0x14	; 20
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 d9 00 	call	0x1b2	; 0x1b2 <main>
+  8e:	0c 94 47 02 	jmp	0x48e	; 0x48e <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <Lcd_Enable>:
+#include "LCD_Lib.h"
+
+void Lcd_Enable() {
+	sbi(LCD_PORT_CONT, E);
+  96:	85 b1       	in	r24, 0x05	; 5
+  98:	84 60       	ori	r24, 0x04	; 4
+  9a:	85 b9       	out	0x05, r24	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  9c:	85 e0       	ldi	r24, 0x05	; 5
+  9e:	8a 95       	dec	r24
+  a0:	f1 f7       	brne	.-4      	; 0x9e <Lcd_Enable+0x8>
+  a2:	00 00       	nop
+	_delay_us(1);
+	cbi(LCD_PORT_CONT, E);
+  a4:	85 b1       	in	r24, 0x05	; 5
+  a6:	8b 7f       	andi	r24, 0xFB	; 251
+  a8:	85 b9       	out	0x05, r24	; 5
+  aa:	8f e8       	ldi	r24, 0x8F	; 143
+  ac:	91 e0       	ldi	r25, 0x01	; 1
+  ae:	01 97       	sbiw	r24, 0x01	; 1
+  b0:	f1 f7       	brne	.-4      	; 0xae <Lcd_Enable+0x18>
+  b2:	00 c0       	rjmp	.+0      	; 0xb4 <Lcd_Enable+0x1e>
+  b4:	00 00       	nop
+  b6:	08 95       	ret
+
+000000b8 <Lcd_Send_Nibble>:
+	_delay_us(100);
+}
+
+void Lcd_Send_Nibble(uint8_t Data) {
+	LCD_PORT_DATA = (LCD_PORT_DATA & 0x0F) | (Data << LCD_DATA_0);
+  b8:	2b b1       	in	r18, 0x0b	; 11
+  ba:	30 e1       	ldi	r19, 0x10	; 16
+  bc:	83 9f       	mul	r24, r19
+  be:	c0 01       	movw	r24, r0
+  c0:	11 24       	eor	r1, r1
+  c2:	2f 70       	andi	r18, 0x0F	; 15
+  c4:	82 2b       	or	r24, r18
+  c6:	8b b9       	out	0x0b, r24	; 11
+	Lcd_Enable();
+  c8:	0e 94 4b 00 	call	0x96	; 0x96 <Lcd_Enable>
+  cc:	08 95       	ret
+
+000000ce <Lcd_Send_Byte>:
+}
+
+void Lcd_Send_Byte(uint8_t Data, uint8_t isData) {
+  ce:	cf 93       	push	r28
+  d0:	c8 2f       	mov	r28, r24
+	if (isData) {
+  d2:	66 23       	and	r22, r22
+  d4:	21 f0       	breq	.+8      	; 0xde <Lcd_Send_Byte+0x10>
+		sbi(LCD_PORT_CONT, RS);
+  d6:	85 b1       	in	r24, 0x05	; 5
+  d8:	81 60       	ori	r24, 0x01	; 1
+  da:	85 b9       	out	0x05, r24	; 5
+  dc:	03 c0       	rjmp	.+6      	; 0xe4 <Lcd_Send_Byte+0x16>
+		} else {
+		cbi(LCD_PORT_CONT, RS);
+  de:	85 b1       	in	r24, 0x05	; 5
+  e0:	8e 7f       	andi	r24, 0xFE	; 254
+  e2:	85 b9       	out	0x05, r24	; 5
+	}
+	cbi(LCD_PORT_CONT, RW);
+  e4:	85 b1       	in	r24, 0x05	; 5
+  e6:	8d 7f       	andi	r24, 0xFD	; 253
+  e8:	85 b9       	out	0x05, r24	; 5
+	
+	Lcd_Send_Nibble(Data >> 4);  // G?i 4 bit cao
+  ea:	8c 2f       	mov	r24, r28
+  ec:	82 95       	swap	r24
+  ee:	8f 70       	andi	r24, 0x0F	; 15
+  f0:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	Lcd_Send_Nibble(Data & 0x0F);  // G?i 4 bit th?p
+  f4:	8c 2f       	mov	r24, r28
+  f6:	8f 70       	andi	r24, 0x0F	; 15
+  f8:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+}
+  fc:	cf 91       	pop	r28
+  fe:	08 95       	ret
+
+00000100 <Lcd_Clear>:
+
+void Lcd_Clear() {
+	Lcd_Send_Byte(0x01, 0);
+ 100:	60 e0       	ldi	r22, 0x00	; 0
+ 102:	81 e0       	ldi	r24, 0x01	; 1
+ 104:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 108:	8f e3       	ldi	r24, 0x3F	; 63
+ 10a:	9f e1       	ldi	r25, 0x1F	; 31
+ 10c:	01 97       	sbiw	r24, 0x01	; 1
+ 10e:	f1 f7       	brne	.-4      	; 0x10c <Lcd_Clear+0xc>
+ 110:	00 c0       	rjmp	.+0      	; 0x112 <Lcd_Clear+0x12>
+ 112:	00 00       	nop
+ 114:	08 95       	ret
+
+00000116 <Lcd_Init>:
+	_delay_ms(2);
+}
+
+void Lcd_Init() {
+	LCD_DDR_DATA |= (0xF0);  // Ch? c?u hình 4 bit cao làm output
+ 116:	8a b1       	in	r24, 0x0a	; 10
+ 118:	80 6f       	ori	r24, 0xF0	; 240
+ 11a:	8a b9       	out	0x0a, r24	; 10
+	LCD_DDR_CONT |= (1 << RS) | (1 << RW) | (1 << E);
+ 11c:	84 b1       	in	r24, 0x04	; 4
+ 11e:	87 60       	ori	r24, 0x07	; 7
+ 120:	84 b9       	out	0x04, r24	; 4
+ 122:	2f ef       	ldi	r18, 0xFF	; 255
+ 124:	89 ef       	ldi	r24, 0xF9	; 249
+ 126:	90 e0       	ldi	r25, 0x00	; 0
+ 128:	21 50       	subi	r18, 0x01	; 1
+ 12a:	80 40       	sbci	r24, 0x00	; 0
+ 12c:	90 40       	sbci	r25, 0x00	; 0
+ 12e:	e1 f7       	brne	.-8      	; 0x128 <Lcd_Init+0x12>
+ 130:	00 c0       	rjmp	.+0      	; 0x132 <Lcd_Init+0x1c>
+ 132:	00 00       	nop
+
+	_delay_ms(20);
+	Lcd_Send_Nibble(0x03);
+ 134:	83 e0       	ldi	r24, 0x03	; 3
+ 136:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+ 13a:	8f e1       	ldi	r24, 0x1F	; 31
+ 13c:	9e e4       	ldi	r25, 0x4E	; 78
+ 13e:	01 97       	sbiw	r24, 0x01	; 1
+ 140:	f1 f7       	brne	.-4      	; 0x13e <Lcd_Init+0x28>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <Lcd_Init+0x2e>
+ 144:	00 00       	nop
+	_delay_ms(5);
+	Lcd_Send_Nibble(0x03);
+ 146:	83 e0       	ldi	r24, 0x03	; 3
+ 148:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 14c:	87 e5       	ldi	r24, 0x57	; 87
+ 14e:	92 e0       	ldi	r25, 0x02	; 2
+ 150:	01 97       	sbiw	r24, 0x01	; 1
+ 152:	f1 f7       	brne	.-4      	; 0x150 <Lcd_Init+0x3a>
+ 154:	00 c0       	rjmp	.+0      	; 0x156 <Lcd_Init+0x40>
+ 156:	00 00       	nop
+	_delay_us(150);
+	Lcd_Send_Nibble(0x03);
+ 158:	83 e0       	ldi	r24, 0x03	; 3
+ 15a:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	Lcd_Send_Nibble(0x02);
+ 15e:	82 e0       	ldi	r24, 0x02	; 2
+ 160:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	
+	Lcd_Send_Byte(0x28, 0);  // Ch? ?? 4-bit, 2 dòng, font 5x8
+ 164:	60 e0       	ldi	r22, 0x00	; 0
+ 166:	88 e2       	ldi	r24, 0x28	; 40
+ 168:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	Lcd_Send_Byte(0x0C, 0);  // B?t màn hình, t?t con tr?
+ 16c:	60 e0       	ldi	r22, 0x00	; 0
+ 16e:	8c e0       	ldi	r24, 0x0C	; 12
+ 170:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	Lcd_Send_Byte(0x06, 0);  // T?ng ??a ch?, không d?ch màn hình
+ 174:	60 e0       	ldi	r22, 0x00	; 0
+ 176:	86 e0       	ldi	r24, 0x06	; 6
+ 178:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	Lcd_Clear();
+ 17c:	0e 94 80 00 	call	0x100	; 0x100 <Lcd_Clear>
+ 180:	08 95       	ret
+
+00000182 <Lcd_Set_Cursor>:
+}
+
+void Lcd_Set_Cursor(uint8_t Col, uint8_t Row) {
+	uint8_t pos = (Row == 0) ? 0x80 : 0xC0;
+ 182:	61 11       	cpse	r22, r1
+ 184:	02 c0       	rjmp	.+4      	; 0x18a <Lcd_Set_Cursor+0x8>
+ 186:	90 e8       	ldi	r25, 0x80	; 128
+ 188:	01 c0       	rjmp	.+2      	; 0x18c <Lcd_Set_Cursor+0xa>
+ 18a:	90 ec       	ldi	r25, 0xC0	; 192
+	pos += Col;
+	Lcd_Send_Byte(pos, 0);
+ 18c:	60 e0       	ldi	r22, 0x00	; 0
+ 18e:	89 0f       	add	r24, r25
+ 190:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+ 194:	08 95       	ret
+
+00000196 <Lcd_Msg>:
+}
+
+void Lcd_Msg(const char *Msg) {
+ 196:	cf 93       	push	r28
+ 198:	df 93       	push	r29
+ 19a:	ec 01       	movw	r28, r24
+	while (*Msg) {
+ 19c:	04 c0       	rjmp	.+8      	; 0x1a6 <Lcd_Msg+0x10>
+		Lcd_Send_Byte(*Msg++, 1);
+ 19e:	21 96       	adiw	r28, 0x01	; 1
+ 1a0:	61 e0       	ldi	r22, 0x01	; 1
+ 1a2:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	pos += Col;
+	Lcd_Send_Byte(pos, 0);
+}
+
+void Lcd_Msg(const char *Msg) {
+	while (*Msg) {
+ 1a6:	88 81       	ld	r24, Y
+ 1a8:	81 11       	cpse	r24, r1
+ 1aa:	f9 cf       	rjmp	.-14     	; 0x19e <Lcd_Msg+0x8>
+		Lcd_Send_Byte(*Msg++, 1);
+	}
+}
+ 1ac:	df 91       	pop	r29
+ 1ae:	cf 91       	pop	r28
+ 1b0:	08 95       	ret
+
+000001b2 <main>:
+#include <avr/interrupt.h>
+
+#include "Modbus_RS485_Lib.h"
+#include "LCD_Lib.h"
+
+int main(){
+ 1b2:	cf 93       	push	r28
+ 1b4:	df 93       	push	r29
+ 1b6:	00 d0       	rcall	.+0      	; 0x1b8 <main+0x6>
+ 1b8:	1f 92       	push	r1
+ 1ba:	cd b7       	in	r28, 0x3d	; 61
+ 1bc:	de b7       	in	r29, 0x3e	; 62
+	Uart_Init(BAUD);
+ 1be:	80 e8       	ldi	r24, 0x80	; 128
+ 1c0:	95 e2       	ldi	r25, 0x25	; 37
+ 1c2:	0e 94 31 01 	call	0x262	; 0x262 <Uart_Init>
+	RS485_Init();
+ 1c6:	0e 94 75 01 	call	0x2ea	; 0x2ea <RS485_Init>
+	Lcd_Init();
+ 1ca:	0e 94 8b 00 	call	0x116	; 0x116 <Lcd_Init>
+	
+	Lcd_Clear();
+ 1ce:	0e 94 80 00 	call	0x100	; 0x100 <Lcd_Clear>
+	Lcd_Set_Cursor(0, 0);
+ 1d2:	60 e0       	ldi	r22, 0x00	; 0
+ 1d4:	80 e0       	ldi	r24, 0x00	; 0
+ 1d6:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+	Lcd_Msg("Slave1: ");
+ 1da:	80 e0       	ldi	r24, 0x00	; 0
+ 1dc:	91 e0       	ldi	r25, 0x01	; 1
+ 1de:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+	Lcd_Set_Cursor(0, 1);
+ 1e2:	61 e0       	ldi	r22, 0x01	; 1
+ 1e4:	80 e0       	ldi	r24, 0x00	; 0
+ 1e6:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+	Lcd_Msg("Data: ");
+ 1ea:	89 e0       	ldi	r24, 0x09	; 9
+ 1ec:	91 e0       	ldi	r25, 0x01	; 1
+ 1ee:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+	
+	uint16_t Length_Data_Slave3 = 1;
+	uint8_t Data_Slave3;
+	DDRC |= (1 << PORTC0);
+ 1f2:	87 b1       	in	r24, 0x07	; 7
+ 1f4:	81 60       	ori	r24, 0x01	; 1
+ 1f6:	87 b9       	out	0x07, r24	; 7
+	PORTC &= ~(1 << PORTC0);
+ 1f8:	88 b1       	in	r24, 0x08	; 8
+ 1fa:	8e 7f       	andi	r24, 0xFE	; 254
+ 1fc:	88 b9       	out	0x08, r24	; 8
+	
+	while(1){
+		Modbus_Rec(ADDR_SLAVE3, &Data_Slave3, Length_Data_Slave3);
+ 1fe:	41 e0       	ldi	r20, 0x01	; 1
+ 200:	50 e0       	ldi	r21, 0x00	; 0
+ 202:	be 01       	movw	r22, r28
+ 204:	6f 5f       	subi	r22, 0xFF	; 255
+ 206:	7f 4f       	sbci	r23, 0xFF	; 255
+ 208:	83 e0       	ldi	r24, 0x03	; 3
+ 20a:	0e 94 d5 01 	call	0x3aa	; 0x3aa <Modbus_Rec>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 20e:	2f ef       	ldi	r18, 0xFF	; 255
+ 210:	81 ee       	ldi	r24, 0xE1	; 225
+ 212:	94 e0       	ldi	r25, 0x04	; 4
+ 214:	21 50       	subi	r18, 0x01	; 1
+ 216:	80 40       	sbci	r24, 0x00	; 0
+ 218:	90 40       	sbci	r25, 0x00	; 0
+ 21a:	e1 f7       	brne	.-8      	; 0x214 <main+0x62>
+ 21c:	00 c0       	rjmp	.+0      	; 0x21e <main+0x6c>
+ 21e:	00 00       	nop
+		_delay_ms(100);
+		RS485_EN_Rec();
+ 220:	0e 94 7c 01 	call	0x2f8	; 0x2f8 <RS485_EN_Rec>
+		Lcd_Set_Cursor(10, 0);
+ 224:	60 e0       	ldi	r22, 0x00	; 0
+ 226:	8a e0       	ldi	r24, 0x0A	; 10
+ 228:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+		Lcd_Msg("Rec");
+ 22c:	80 e1       	ldi	r24, 0x10	; 16
+ 22e:	91 e0       	ldi	r25, 0x01	; 1
+ 230:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+		Lcd_Set_Cursor(10, 1);
+ 234:	61 e0       	ldi	r22, 0x01	; 1
+ 236:	8a e0       	ldi	r24, 0x0A	; 10
+ 238:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+		char temp[2] = {Data_Slave3, '\0'};
+ 23c:	89 81       	ldd	r24, Y+1	; 0x01
+ 23e:	8a 83       	std	Y+2, r24	; 0x02
+ 240:	1b 82       	std	Y+3, r1	; 0x03
+		Lcd_Msg(temp);
+ 242:	ce 01       	movw	r24, r28
+ 244:	02 96       	adiw	r24, 0x02	; 2
+ 246:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+		
+		// So sánh v?i ký t?, thay ??i tùy m?c ?ích
+		if(Data_Slave3 == 'G' || Data_Slave3 == 'H' || Data_Slave3 == 'I'){
+ 24a:	89 81       	ldd	r24, Y+1	; 0x01
+ 24c:	87 54       	subi	r24, 0x47	; 71
+ 24e:	83 30       	cpi	r24, 0x03	; 3
+ 250:	20 f4       	brcc	.+8      	; 0x25a <main+0xa8>
+			PORTC |= (1 << PORTC0);
+ 252:	88 b1       	in	r24, 0x08	; 8
+ 254:	81 60       	ori	r24, 0x01	; 1
+ 256:	88 b9       	out	0x08, r24	; 8
+ 258:	d2 cf       	rjmp	.-92     	; 0x1fe <main+0x4c>
+			} else {
+			PORTC &= ~(1 << PORTC0);
+ 25a:	88 b1       	in	r24, 0x08	; 8
+ 25c:	8e 7f       	andi	r24, 0xFE	; 254
+ 25e:	88 b9       	out	0x08, r24	; 8
+		}
+	}
+ 260:	ce cf       	rjmp	.-100    	; 0x1fe <main+0x4c>
+
+00000262 <Uart_Init>:
+	}
+	uint16_t CRC_16 = Cal_CRC_16(Frame, Length_Frame);
+	Frame[Length_Frame ++] = (uint8_t) CRC_16;       // Low Byte tr??c
+	Frame[Length_Frame ++] = (uint8_t) (CRC_16 >> 8); // High Byte sau
+	Uart_TransArray(Frame, Length_Frame);
+}
+ 262:	82 95       	swap	r24
+ 264:	92 95       	swap	r25
+ 266:	90 7f       	andi	r25, 0xF0	; 240
+ 268:	98 27       	eor	r25, r24
+ 26a:	80 7f       	andi	r24, 0xF0	; 240
+ 26c:	98 27       	eor	r25, r24
+ 26e:	9c 01       	movw	r18, r24
+ 270:	40 e0       	ldi	r20, 0x00	; 0
+ 272:	50 e0       	ldi	r21, 0x00	; 0
+ 274:	60 e0       	ldi	r22, 0x00	; 0
+ 276:	74 e2       	ldi	r23, 0x24	; 36
+ 278:	84 ef       	ldi	r24, 0xF4	; 244
+ 27a:	90 e0       	ldi	r25, 0x00	; 0
+ 27c:	0e 94 25 02 	call	0x44a	; 0x44a <__udivmodsi4>
+ 280:	21 50       	subi	r18, 0x01	; 1
+ 282:	31 09       	sbc	r19, r1
+ 284:	30 93 c5 00 	sts	0x00C5, r19	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 288:	20 93 c4 00 	sts	0x00C4, r18	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 28c:	88 e1       	ldi	r24, 0x18	; 24
+ 28e:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+ 292:	86 e0       	ldi	r24, 0x06	; 6
+ 294:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+ 298:	08 95       	ret
+
+0000029a <Uart_RecByte>:
+ 29a:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 29e:	88 23       	and	r24, r24
+ 2a0:	e4 f7       	brge	.-8      	; 0x29a <Uart_RecByte>
+ 2a2:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 2a6:	08 95       	ret
+
+000002a8 <Uart_RecArray>:
+ 2a8:	cf 92       	push	r12
+ 2aa:	df 92       	push	r13
+ 2ac:	ef 92       	push	r14
+ 2ae:	ff 92       	push	r15
+ 2b0:	0f 93       	push	r16
+ 2b2:	1f 93       	push	r17
+ 2b4:	cf 93       	push	r28
+ 2b6:	df 93       	push	r29
+ 2b8:	6c 01       	movw	r12, r24
+ 2ba:	7b 01       	movw	r14, r22
+ 2bc:	c0 e0       	ldi	r28, 0x00	; 0
+ 2be:	d0 e0       	ldi	r29, 0x00	; 0
+ 2c0:	08 c0       	rjmp	.+16     	; 0x2d2 <Uart_RecArray+0x2a>
+ 2c2:	86 01       	movw	r16, r12
+ 2c4:	0c 0f       	add	r16, r28
+ 2c6:	1d 1f       	adc	r17, r29
+ 2c8:	0e 94 4d 01 	call	0x29a	; 0x29a <Uart_RecByte>
+ 2cc:	f8 01       	movw	r30, r16
+ 2ce:	80 83       	st	Z, r24
+ 2d0:	21 96       	adiw	r28, 0x01	; 1
+ 2d2:	ce 15       	cp	r28, r14
+ 2d4:	df 05       	cpc	r29, r15
+ 2d6:	a8 f3       	brcs	.-22     	; 0x2c2 <Uart_RecArray+0x1a>
+ 2d8:	df 91       	pop	r29
+ 2da:	cf 91       	pop	r28
+ 2dc:	1f 91       	pop	r17
+ 2de:	0f 91       	pop	r16
+ 2e0:	ff 90       	pop	r15
+ 2e2:	ef 90       	pop	r14
+ 2e4:	df 90       	pop	r13
+ 2e6:	cf 90       	pop	r12
+ 2e8:	08 95       	ret
+
+000002ea <RS485_Init>:
+ 2ea:	8a b1       	in	r24, 0x0a	; 10
+ 2ec:	84 60       	ori	r24, 0x04	; 4
+ 2ee:	8a b9       	out	0x0a, r24	; 10
+ 2f0:	8b b1       	in	r24, 0x0b	; 11
+ 2f2:	8b 7f       	andi	r24, 0xFB	; 251
+ 2f4:	8b b9       	out	0x0b, r24	; 11
+ 2f6:	08 95       	ret
+
+000002f8 <RS485_EN_Rec>:
+ 2f8:	8b b1       	in	r24, 0x0b	; 11
+ 2fa:	8b 7f       	andi	r24, 0xFB	; 251
+ 2fc:	8b b9       	out	0x0b, r24	; 11
+ 2fe:	8f e3       	ldi	r24, 0x3F	; 63
+ 300:	9c e9       	ldi	r25, 0x9C	; 156
+ 302:	01 97       	sbiw	r24, 0x01	; 1
+ 304:	f1 f7       	brne	.-4      	; 0x302 <RS485_EN_Rec+0xa>
+ 306:	00 c0       	rjmp	.+0      	; 0x308 <RS485_EN_Rec+0x10>
+ 308:	00 00       	nop
+ 30a:	08 95       	ret
+
+0000030c <Cal_CRC_16>:
+ 30c:	dc 01       	movw	r26, r24
+ 30e:	40 e0       	ldi	r20, 0x00	; 0
+ 310:	50 e0       	ldi	r21, 0x00	; 0
+ 312:	8f ef       	ldi	r24, 0xFF	; 255
+ 314:	9f ef       	ldi	r25, 0xFF	; 255
+ 316:	17 c0       	rjmp	.+46     	; 0x346 <Cal_CRC_16+0x3a>
+ 318:	fd 01       	movw	r30, r26
+ 31a:	e4 0f       	add	r30, r20
+ 31c:	f5 1f       	adc	r31, r21
+ 31e:	20 81       	ld	r18, Z
+ 320:	82 27       	eor	r24, r18
+ 322:	20 e0       	ldi	r18, 0x00	; 0
+ 324:	0c c0       	rjmp	.+24     	; 0x33e <Cal_CRC_16+0x32>
+ 326:	80 ff       	sbrs	r24, 0
+ 328:	07 c0       	rjmp	.+14     	; 0x338 <Cal_CRC_16+0x2c>
+ 32a:	96 95       	lsr	r25
+ 32c:	87 95       	ror	r24
+ 32e:	31 e0       	ldi	r19, 0x01	; 1
+ 330:	83 27       	eor	r24, r19
+ 332:	30 ea       	ldi	r19, 0xA0	; 160
+ 334:	93 27       	eor	r25, r19
+ 336:	02 c0       	rjmp	.+4      	; 0x33c <Cal_CRC_16+0x30>
+ 338:	96 95       	lsr	r25
+ 33a:	87 95       	ror	r24
+ 33c:	2f 5f       	subi	r18, 0xFF	; 255
+ 33e:	28 30       	cpi	r18, 0x08	; 8
+ 340:	90 f3       	brcs	.-28     	; 0x326 <Cal_CRC_16+0x1a>
+ 342:	4f 5f       	subi	r20, 0xFF	; 255
+ 344:	5f 4f       	sbci	r21, 0xFF	; 255
+ 346:	46 17       	cp	r20, r22
+ 348:	57 07       	cpc	r21, r23
+ 34a:	30 f3       	brcs	.-52     	; 0x318 <Cal_CRC_16+0xc>
+ 34c:	08 95       	ret
+
+0000034e <Check_CRC_16>:
+ 34e:	ef 92       	push	r14
+ 350:	ff 92       	push	r15
+ 352:	0f 93       	push	r16
+ 354:	1f 93       	push	r17
+ 356:	cf 93       	push	r28
+ 358:	df 93       	push	r29
+ 35a:	62 30       	cpi	r22, 0x02	; 2
+ 35c:	71 05       	cpc	r23, r1
+ 35e:	e8 f0       	brcs	.+58     	; 0x39a <Check_CRC_16+0x4c>
+ 360:	eb 01       	movw	r28, r22
+ 362:	8c 01       	movw	r16, r24
+ 364:	7b 01       	movw	r14, r22
+ 366:	82 e0       	ldi	r24, 0x02	; 2
+ 368:	e8 1a       	sub	r14, r24
+ 36a:	f1 08       	sbc	r15, r1
+ 36c:	b7 01       	movw	r22, r14
+ 36e:	c8 01       	movw	r24, r16
+ 370:	0e 94 86 01 	call	0x30c	; 0x30c <Cal_CRC_16>
+ 374:	c0 0f       	add	r28, r16
+ 376:	d1 1f       	adc	r29, r17
+ 378:	21 97       	sbiw	r28, 0x01	; 1
+ 37a:	28 81       	ld	r18, Y
+ 37c:	30 e0       	ldi	r19, 0x00	; 0
+ 37e:	32 2f       	mov	r19, r18
+ 380:	22 27       	eor	r18, r18
+ 382:	f8 01       	movw	r30, r16
+ 384:	ee 0d       	add	r30, r14
+ 386:	ff 1d       	adc	r31, r15
+ 388:	40 81       	ld	r20, Z
+ 38a:	24 2b       	or	r18, r20
+ 38c:	41 e0       	ldi	r20, 0x01	; 1
+ 38e:	82 17       	cp	r24, r18
+ 390:	93 07       	cpc	r25, r19
+ 392:	09 f0       	breq	.+2      	; 0x396 <Check_CRC_16+0x48>
+ 394:	40 e0       	ldi	r20, 0x00	; 0
+ 396:	84 2f       	mov	r24, r20
+ 398:	01 c0       	rjmp	.+2      	; 0x39c <Check_CRC_16+0x4e>
+ 39a:	80 e0       	ldi	r24, 0x00	; 0
+ 39c:	df 91       	pop	r29
+ 39e:	cf 91       	pop	r28
+ 3a0:	1f 91       	pop	r17
+ 3a2:	0f 91       	pop	r16
+ 3a4:	ff 90       	pop	r15
+ 3a6:	ef 90       	pop	r14
+ 3a8:	08 95       	ret
+
+000003aa <Modbus_Rec>:
+void Modbus_Rec(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
+ 3aa:	bf 92       	push	r11
+ 3ac:	cf 92       	push	r12
+ 3ae:	df 92       	push	r13
+ 3b0:	ef 92       	push	r14
+ 3b2:	ff 92       	push	r15
+ 3b4:	0f 93       	push	r16
+ 3b6:	1f 93       	push	r17
+ 3b8:	cf 93       	push	r28
+ 3ba:	df 93       	push	r29
+ 3bc:	cd b7       	in	r28, 0x3d	; 61
+ 3be:	de b7       	in	r29, 0x3e	; 62
+ 3c0:	da 95       	dec	r29
+ 3c2:	0f b6       	in	r0, 0x3f	; 63
+ 3c4:	f8 94       	cli
+ 3c6:	de bf       	out	0x3e, r29	; 62
+ 3c8:	0f be       	out	0x3f, r0	; 63
+ 3ca:	cd bf       	out	0x3d, r28	; 61
+ 3cc:	b8 2e       	mov	r11, r24
+ 3ce:	7b 01       	movw	r14, r22
+ 3d0:	8a 01       	movw	r16, r20
+	RS485_EN_Rec();
+ 3d2:	0e 94 7c 01 	call	0x2f8	; 0x2f8 <RS485_EN_Rec>
+	uint8_t Frame[SIZE_OF_BUF];
+	uint16_t Length_Frame = Length_Data + 3;
+ 3d6:	68 01       	movw	r12, r16
+ 3d8:	83 e0       	ldi	r24, 0x03	; 3
+ 3da:	c8 0e       	add	r12, r24
+ 3dc:	d1 1c       	adc	r13, r1
+	
+	Uart_RecArray(Frame, Length_Frame);
+ 3de:	b6 01       	movw	r22, r12
+ 3e0:	ce 01       	movw	r24, r28
+ 3e2:	01 96       	adiw	r24, 0x01	; 1
+ 3e4:	0e 94 54 01 	call	0x2a8	; 0x2a8 <Uart_RecArray>
+	if ((Frame[0] == Addr) && (Check_CRC_16(Frame, Length_Frame))) {
+ 3e8:	89 81       	ldd	r24, Y+1	; 0x01
+ 3ea:	8b 11       	cpse	r24, r11
+ 3ec:	1b c0       	rjmp	.+54     	; 0x424 <__EEPROM_REGION_LENGTH__+0x24>
+ 3ee:	b6 01       	movw	r22, r12
+ 3f0:	ce 01       	movw	r24, r28
+ 3f2:	01 96       	adiw	r24, 0x01	; 1
+ 3f4:	0e 94 a7 01 	call	0x34e	; 0x34e <Check_CRC_16>
+ 3f8:	81 11       	cpse	r24, r1
+ 3fa:	0e c0       	rjmp	.+28     	; 0x418 <__EEPROM_REGION_LENGTH__+0x18>
+ 3fc:	13 c0       	rjmp	.+38     	; 0x424 <__EEPROM_REGION_LENGTH__+0x24>
+		for(uint16_t i = 0; i < Length_Frame - 3; i ++){
+			Data[i] = Frame[i + 1];
+ 3fe:	d7 01       	movw	r26, r14
+ 400:	a8 0f       	add	r26, r24
+ 402:	b9 1f       	adc	r27, r25
+ 404:	01 96       	adiw	r24, 0x01	; 1
+ 406:	e1 e0       	ldi	r30, 0x01	; 1
+ 408:	f0 e0       	ldi	r31, 0x00	; 0
+ 40a:	ec 0f       	add	r30, r28
+ 40c:	fd 1f       	adc	r31, r29
+ 40e:	e8 0f       	add	r30, r24
+ 410:	f9 1f       	adc	r31, r25
+ 412:	20 81       	ld	r18, Z
+ 414:	2c 93       	st	X, r18
+ 416:	02 c0       	rjmp	.+4      	; 0x41c <__EEPROM_REGION_LENGTH__+0x1c>
+ 418:	80 e0       	ldi	r24, 0x00	; 0
+ 41a:	90 e0       	ldi	r25, 0x00	; 0
+	uint8_t Frame[SIZE_OF_BUF];
+	uint16_t Length_Frame = Length_Data + 3;
+	
+	Uart_RecArray(Frame, Length_Frame);
+	if ((Frame[0] == Addr) && (Check_CRC_16(Frame, Length_Frame))) {
+		for(uint16_t i = 0; i < Length_Frame - 3; i ++){
+ 41c:	80 17       	cp	r24, r16
+ 41e:	91 07       	cpc	r25, r17
+ 420:	70 f3       	brcs	.-36     	; 0x3fe <Modbus_Rec+0x54>
+ 422:	03 c0       	rjmp	.+6      	; 0x42a <__EEPROM_REGION_LENGTH__+0x2a>
+			Data[i] = Frame[i + 1];
+		}
+		return;
+		} else{
+		*Data = DATA_ERROR;
+ 424:	8f ef       	ldi	r24, 0xFF	; 255
+ 426:	f7 01       	movw	r30, r14
+ 428:	80 83       	st	Z, r24
+		return;
+	}
+ 42a:	d3 95       	inc	r29
+ 42c:	0f b6       	in	r0, 0x3f	; 63
+ 42e:	f8 94       	cli
+ 430:	de bf       	out	0x3e, r29	; 62
+ 432:	0f be       	out	0x3f, r0	; 63
+ 434:	cd bf       	out	0x3d, r28	; 61
+ 436:	df 91       	pop	r29
+ 438:	cf 91       	pop	r28
+ 43a:	1f 91       	pop	r17
+ 43c:	0f 91       	pop	r16
+ 43e:	ff 90       	pop	r15
+ 440:	ef 90       	pop	r14
+ 442:	df 90       	pop	r13
+ 444:	cf 90       	pop	r12
+ 446:	bf 90       	pop	r11
+ 448:	08 95       	ret
+
+0000044a <__udivmodsi4>:
+ 44a:	a1 e2       	ldi	r26, 0x21	; 33
+ 44c:	1a 2e       	mov	r1, r26
+ 44e:	aa 1b       	sub	r26, r26
+ 450:	bb 1b       	sub	r27, r27
+ 452:	fd 01       	movw	r30, r26
+ 454:	0d c0       	rjmp	.+26     	; 0x470 <__udivmodsi4_ep>
+
+00000456 <__udivmodsi4_loop>:
+ 456:	aa 1f       	adc	r26, r26
+ 458:	bb 1f       	adc	r27, r27
+ 45a:	ee 1f       	adc	r30, r30
+ 45c:	ff 1f       	adc	r31, r31
+ 45e:	a2 17       	cp	r26, r18
+ 460:	b3 07       	cpc	r27, r19
+ 462:	e4 07       	cpc	r30, r20
+ 464:	f5 07       	cpc	r31, r21
+ 466:	20 f0       	brcs	.+8      	; 0x470 <__udivmodsi4_ep>
+ 468:	a2 1b       	sub	r26, r18
+ 46a:	b3 0b       	sbc	r27, r19
+ 46c:	e4 0b       	sbc	r30, r20
+ 46e:	f5 0b       	sbc	r31, r21
+
+00000470 <__udivmodsi4_ep>:
+ 470:	66 1f       	adc	r22, r22
+ 472:	77 1f       	adc	r23, r23
+ 474:	88 1f       	adc	r24, r24
+ 476:	99 1f       	adc	r25, r25
+ 478:	1a 94       	dec	r1
+ 47a:	69 f7       	brne	.-38     	; 0x456 <__udivmodsi4_loop>
+ 47c:	60 95       	com	r22
+ 47e:	70 95       	com	r23
+ 480:	80 95       	com	r24
+ 482:	90 95       	com	r25
+ 484:	9b 01       	movw	r18, r22
+ 486:	ac 01       	movw	r20, r24
+ 488:	bd 01       	movw	r22, r26
+ 48a:	cf 01       	movw	r24, r30
+ 48c:	08 95       	ret
+
+0000048e <_exit>:
+ 48e:	f8 94       	cli
+
+00000490 <__stop_program>:
+ 490:	ff cf       	rjmp	.-2      	; 0x490 <__stop_program>

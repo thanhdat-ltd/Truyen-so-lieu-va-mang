@@ -1,0 +1,903 @@
+
+GccApplication2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000016  00800100  0000056a  000005de  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000056a  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000005f4  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000624  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000108  00000000  00000000  00000664  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000016c9  00000000  00000000  0000076c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000ae9  00000000  00000000  00001e35  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000a88  00000000  00000000  0000291e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000002c8  00000000  00000000  000033a8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000058e  00000000  00000000  00003670  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000ddb  00000000  00000000  00003bfe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000120  00000000  00000000  000049d9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea e6       	ldi	r30, 0x6A	; 106
+  7c:	f5 e0       	ldi	r31, 0x05	; 5
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a6 31       	cpi	r26, 0x16	; 22
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 d9 00 	call	0x1b2	; 0x1b2 <main>
+  8e:	0c 94 b3 02 	jmp	0x566	; 0x566 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <Lcd_Enable>:
+#include "LCD_Lib.h"
+
+void Lcd_Enable() {
+	sbi(LCD_PORT_CONT, E);
+  96:	85 b1       	in	r24, 0x05	; 5
+  98:	84 60       	ori	r24, 0x04	; 4
+  9a:	85 b9       	out	0x05, r24	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  9c:	85 e0       	ldi	r24, 0x05	; 5
+  9e:	8a 95       	dec	r24
+  a0:	f1 f7       	brne	.-4      	; 0x9e <Lcd_Enable+0x8>
+  a2:	00 00       	nop
+	_delay_us(1);
+	cbi(LCD_PORT_CONT, E);
+  a4:	85 b1       	in	r24, 0x05	; 5
+  a6:	8b 7f       	andi	r24, 0xFB	; 251
+  a8:	85 b9       	out	0x05, r24	; 5
+  aa:	8f e8       	ldi	r24, 0x8F	; 143
+  ac:	91 e0       	ldi	r25, 0x01	; 1
+  ae:	01 97       	sbiw	r24, 0x01	; 1
+  b0:	f1 f7       	brne	.-4      	; 0xae <Lcd_Enable+0x18>
+  b2:	00 c0       	rjmp	.+0      	; 0xb4 <Lcd_Enable+0x1e>
+  b4:	00 00       	nop
+  b6:	08 95       	ret
+
+000000b8 <Lcd_Send_Nibble>:
+	_delay_us(100);
+}
+
+void Lcd_Send_Nibble(uint8_t Data) {
+	LCD_PORT_DATA = (LCD_PORT_DATA & 0x0F) | (Data << LCD_DATA_0);
+  b8:	2b b1       	in	r18, 0x0b	; 11
+  ba:	30 e1       	ldi	r19, 0x10	; 16
+  bc:	83 9f       	mul	r24, r19
+  be:	c0 01       	movw	r24, r0
+  c0:	11 24       	eor	r1, r1
+  c2:	2f 70       	andi	r18, 0x0F	; 15
+  c4:	82 2b       	or	r24, r18
+  c6:	8b b9       	out	0x0b, r24	; 11
+	Lcd_Enable();
+  c8:	0e 94 4b 00 	call	0x96	; 0x96 <Lcd_Enable>
+  cc:	08 95       	ret
+
+000000ce <Lcd_Send_Byte>:
+}
+
+void Lcd_Send_Byte(uint8_t Data, uint8_t isData) {
+  ce:	cf 93       	push	r28
+  d0:	c8 2f       	mov	r28, r24
+	if (isData) {
+  d2:	66 23       	and	r22, r22
+  d4:	21 f0       	breq	.+8      	; 0xde <Lcd_Send_Byte+0x10>
+		sbi(LCD_PORT_CONT, RS);
+  d6:	85 b1       	in	r24, 0x05	; 5
+  d8:	81 60       	ori	r24, 0x01	; 1
+  da:	85 b9       	out	0x05, r24	; 5
+  dc:	03 c0       	rjmp	.+6      	; 0xe4 <Lcd_Send_Byte+0x16>
+		} else {
+		cbi(LCD_PORT_CONT, RS);
+  de:	85 b1       	in	r24, 0x05	; 5
+  e0:	8e 7f       	andi	r24, 0xFE	; 254
+  e2:	85 b9       	out	0x05, r24	; 5
+	}
+	cbi(LCD_PORT_CONT, RW);
+  e4:	85 b1       	in	r24, 0x05	; 5
+  e6:	8d 7f       	andi	r24, 0xFD	; 253
+  e8:	85 b9       	out	0x05, r24	; 5
+	
+	Lcd_Send_Nibble(Data >> 4);  // G?i 4 bit cao
+  ea:	8c 2f       	mov	r24, r28
+  ec:	82 95       	swap	r24
+  ee:	8f 70       	andi	r24, 0x0F	; 15
+  f0:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	Lcd_Send_Nibble(Data & 0x0F);  // G?i 4 bit th?p
+  f4:	8c 2f       	mov	r24, r28
+  f6:	8f 70       	andi	r24, 0x0F	; 15
+  f8:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+}
+  fc:	cf 91       	pop	r28
+  fe:	08 95       	ret
+
+00000100 <Lcd_Clear>:
+
+void Lcd_Clear() {
+	Lcd_Send_Byte(0x01, 0);
+ 100:	60 e0       	ldi	r22, 0x00	; 0
+ 102:	81 e0       	ldi	r24, 0x01	; 1
+ 104:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 108:	8f e3       	ldi	r24, 0x3F	; 63
+ 10a:	9f e1       	ldi	r25, 0x1F	; 31
+ 10c:	01 97       	sbiw	r24, 0x01	; 1
+ 10e:	f1 f7       	brne	.-4      	; 0x10c <Lcd_Clear+0xc>
+ 110:	00 c0       	rjmp	.+0      	; 0x112 <Lcd_Clear+0x12>
+ 112:	00 00       	nop
+ 114:	08 95       	ret
+
+00000116 <Lcd_Init>:
+	_delay_ms(2);
+}
+
+void Lcd_Init() {
+	LCD_DDR_DATA |= (0xF0);  // Ch? c?u hình 4 bit cao làm output
+ 116:	8a b1       	in	r24, 0x0a	; 10
+ 118:	80 6f       	ori	r24, 0xF0	; 240
+ 11a:	8a b9       	out	0x0a, r24	; 10
+	LCD_DDR_CONT |= (1 << RS) | (1 << RW) | (1 << E);
+ 11c:	84 b1       	in	r24, 0x04	; 4
+ 11e:	87 60       	ori	r24, 0x07	; 7
+ 120:	84 b9       	out	0x04, r24	; 4
+ 122:	2f ef       	ldi	r18, 0xFF	; 255
+ 124:	89 ef       	ldi	r24, 0xF9	; 249
+ 126:	90 e0       	ldi	r25, 0x00	; 0
+ 128:	21 50       	subi	r18, 0x01	; 1
+ 12a:	80 40       	sbci	r24, 0x00	; 0
+ 12c:	90 40       	sbci	r25, 0x00	; 0
+ 12e:	e1 f7       	brne	.-8      	; 0x128 <Lcd_Init+0x12>
+ 130:	00 c0       	rjmp	.+0      	; 0x132 <Lcd_Init+0x1c>
+ 132:	00 00       	nop
+
+	_delay_ms(20);
+	Lcd_Send_Nibble(0x03);
+ 134:	83 e0       	ldi	r24, 0x03	; 3
+ 136:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+ 13a:	8f e1       	ldi	r24, 0x1F	; 31
+ 13c:	9e e4       	ldi	r25, 0x4E	; 78
+ 13e:	01 97       	sbiw	r24, 0x01	; 1
+ 140:	f1 f7       	brne	.-4      	; 0x13e <Lcd_Init+0x28>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <Lcd_Init+0x2e>
+ 144:	00 00       	nop
+	_delay_ms(5);
+	Lcd_Send_Nibble(0x03);
+ 146:	83 e0       	ldi	r24, 0x03	; 3
+ 148:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 14c:	87 e5       	ldi	r24, 0x57	; 87
+ 14e:	92 e0       	ldi	r25, 0x02	; 2
+ 150:	01 97       	sbiw	r24, 0x01	; 1
+ 152:	f1 f7       	brne	.-4      	; 0x150 <Lcd_Init+0x3a>
+ 154:	00 c0       	rjmp	.+0      	; 0x156 <Lcd_Init+0x40>
+ 156:	00 00       	nop
+	_delay_us(150);
+	Lcd_Send_Nibble(0x03);
+ 158:	83 e0       	ldi	r24, 0x03	; 3
+ 15a:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	Lcd_Send_Nibble(0x02);
+ 15e:	82 e0       	ldi	r24, 0x02	; 2
+ 160:	0e 94 5c 00 	call	0xb8	; 0xb8 <Lcd_Send_Nibble>
+	
+	Lcd_Send_Byte(0x28, 0);  // Ch? ?? 4-bit, 2 dòng, font 5x8
+ 164:	60 e0       	ldi	r22, 0x00	; 0
+ 166:	88 e2       	ldi	r24, 0x28	; 40
+ 168:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	Lcd_Send_Byte(0x0C, 0);  // B?t màn hình, t?t con tr?
+ 16c:	60 e0       	ldi	r22, 0x00	; 0
+ 16e:	8c e0       	ldi	r24, 0x0C	; 12
+ 170:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	Lcd_Send_Byte(0x06, 0);  // T?ng ??a ch?, không d?ch màn hình
+ 174:	60 e0       	ldi	r22, 0x00	; 0
+ 176:	86 e0       	ldi	r24, 0x06	; 6
+ 178:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	Lcd_Clear();
+ 17c:	0e 94 80 00 	call	0x100	; 0x100 <Lcd_Clear>
+ 180:	08 95       	ret
+
+00000182 <Lcd_Set_Cursor>:
+}
+
+void Lcd_Set_Cursor(uint8_t Col, uint8_t Row) {
+	uint8_t pos = (Row == 0) ? 0x80 : 0xC0;
+ 182:	61 11       	cpse	r22, r1
+ 184:	02 c0       	rjmp	.+4      	; 0x18a <Lcd_Set_Cursor+0x8>
+ 186:	90 e8       	ldi	r25, 0x80	; 128
+ 188:	01 c0       	rjmp	.+2      	; 0x18c <Lcd_Set_Cursor+0xa>
+ 18a:	90 ec       	ldi	r25, 0xC0	; 192
+	pos += Col;
+	Lcd_Send_Byte(pos, 0);
+ 18c:	60 e0       	ldi	r22, 0x00	; 0
+ 18e:	89 0f       	add	r24, r25
+ 190:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+ 194:	08 95       	ret
+
+00000196 <Lcd_Msg>:
+}
+
+void Lcd_Msg(const char *Msg) {
+ 196:	cf 93       	push	r28
+ 198:	df 93       	push	r29
+ 19a:	ec 01       	movw	r28, r24
+	while (*Msg) {
+ 19c:	04 c0       	rjmp	.+8      	; 0x1a6 <Lcd_Msg+0x10>
+		Lcd_Send_Byte(*Msg++, 1);
+ 19e:	21 96       	adiw	r28, 0x01	; 1
+ 1a0:	61 e0       	ldi	r22, 0x01	; 1
+ 1a2:	0e 94 67 00 	call	0xce	; 0xce <Lcd_Send_Byte>
+	pos += Col;
+	Lcd_Send_Byte(pos, 0);
+}
+
+void Lcd_Msg(const char *Msg) {
+	while (*Msg) {
+ 1a6:	88 81       	ld	r24, Y
+ 1a8:	81 11       	cpse	r24, r1
+ 1aa:	f9 cf       	rjmp	.-14     	; 0x19e <Lcd_Msg+0x8>
+		Lcd_Send_Byte(*Msg++, 1);
+	}
+}
+ 1ac:	df 91       	pop	r29
+ 1ae:	cf 91       	pop	r28
+ 1b0:	08 95       	ret
+
+000001b2 <main>:
+
+#define ADDR_SLAVE1    0x01
+#define ADDR_SLAVE2    0x02
+#define ADDR_SLAVE3    0x03
+
+int main(){
+ 1b2:	cf 93       	push	r28
+ 1b4:	df 93       	push	r29
+ 1b6:	cd b7       	in	r28, 0x3d	; 61
+ 1b8:	de b7       	in	r29, 0x3e	; 62
+ 1ba:	2b 97       	sbiw	r28, 0x0b	; 11
+ 1bc:	0f b6       	in	r0, 0x3f	; 63
+ 1be:	f8 94       	cli
+ 1c0:	de bf       	out	0x3e, r29	; 62
+ 1c2:	0f be       	out	0x3f, r0	; 63
+ 1c4:	cd bf       	out	0x3d, r28	; 61
+	Uart_Init(BAUD);
+ 1c6:	80 e8       	ldi	r24, 0x80	; 128
+ 1c8:	95 e2       	ldi	r25, 0x25	; 37
+ 1ca:	0e 94 be 01 	call	0x37c	; 0x37c <Uart_Init>
+	RS485_Init();
+ 1ce:	0e 94 fd 01 	call	0x3fa	; 0x3fa <RS485_Init>
+	Lcd_Init();
+ 1d2:	0e 94 8b 00 	call	0x116	; 0x116 <Lcd_Init>
+	
+	Lcd_Clear();
+ 1d6:	0e 94 80 00 	call	0x100	; 0x100 <Lcd_Clear>
+	Lcd_Set_Cursor(0, 0);
+ 1da:	60 e0       	ldi	r22, 0x00	; 0
+ 1dc:	80 e0       	ldi	r24, 0x00	; 0
+ 1de:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+	Lcd_Msg("Master: ");
+ 1e2:	80 e0       	ldi	r24, 0x00	; 0
+ 1e4:	91 e0       	ldi	r25, 0x01	; 1
+ 1e6:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+	Lcd_Set_Cursor(0, 1);
+ 1ea:	61 e0       	ldi	r22, 0x01	; 1
+ 1ec:	80 e0       	ldi	r24, 0x00	; 0
+ 1ee:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+	Lcd_Msg("Data: ");
+ 1f2:	89 e0       	ldi	r24, 0x09	; 9
+ 1f4:	91 e0       	ldi	r25, 0x01	; 1
+ 1f6:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+	
+	// Truy?n ký t? cho các slave
+	uint8_t Data_Slave1[] = {'A', 'B', 'C'};
+ 1fa:	81 e4       	ldi	r24, 0x41	; 65
+ 1fc:	89 83       	std	Y+1, r24	; 0x01
+ 1fe:	82 e4       	ldi	r24, 0x42	; 66
+ 200:	8a 83       	std	Y+2, r24	; 0x02
+ 202:	83 e4       	ldi	r24, 0x43	; 67
+ 204:	8b 83       	std	Y+3, r24	; 0x03
+	uint8_t Data_Slave2[] = {'D', 'E', 'F'};
+ 206:	84 e4       	ldi	r24, 0x44	; 68
+ 208:	8c 83       	std	Y+4, r24	; 0x04
+ 20a:	85 e4       	ldi	r24, 0x45	; 69
+ 20c:	8d 83       	std	Y+5, r24	; 0x05
+ 20e:	86 e4       	ldi	r24, 0x46	; 70
+ 210:	8e 83       	std	Y+6, r24	; 0x06
+	uint8_t Data_Slave3[] = {'G', 'H', 'I'};
+ 212:	87 e4       	ldi	r24, 0x47	; 71
+ 214:	8f 83       	std	Y+7, r24	; 0x07
+ 216:	88 e4       	ldi	r24, 0x48	; 72
+ 218:	88 87       	std	Y+8, r24	; 0x08
+ 21a:	89 e4       	ldi	r24, 0x49	; 73
+ 21c:	89 87       	std	Y+9, r24	; 0x09
+	
+	while(1){
+		// G?i cho Slave 1
+		for(uint8_t i = 0; i < 3; i++){
+ 21e:	f1 2c       	mov	r15, r1
+ 220:	2c c0       	rjmp	.+88     	; 0x27a <main+0xc8>
+			Modbus_Trans(ADDR_SLAVE1, &Data_Slave1[i], 1);
+ 222:	01 e0       	ldi	r16, 0x01	; 1
+ 224:	10 e0       	ldi	r17, 0x00	; 0
+ 226:	0c 0f       	add	r16, r28
+ 228:	1d 1f       	adc	r17, r29
+ 22a:	0f 0d       	add	r16, r15
+ 22c:	11 1d       	adc	r17, r1
+ 22e:	41 e0       	ldi	r20, 0x01	; 1
+ 230:	50 e0       	ldi	r21, 0x00	; 0
+ 232:	b8 01       	movw	r22, r16
+ 234:	81 e0       	ldi	r24, 0x01	; 1
+ 236:	0e 94 39 02 	call	0x472	; 0x472 <Modbus_Trans>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 23a:	2f ef       	ldi	r18, 0xFF	; 255
+ 23c:	81 ee       	ldi	r24, 0xE1	; 225
+ 23e:	94 e0       	ldi	r25, 0x04	; 4
+ 240:	21 50       	subi	r18, 0x01	; 1
+ 242:	80 40       	sbci	r24, 0x00	; 0
+ 244:	90 40       	sbci	r25, 0x00	; 0
+ 246:	e1 f7       	brne	.-8      	; 0x240 <main+0x8e>
+ 248:	00 c0       	rjmp	.+0      	; 0x24a <main+0x98>
+ 24a:	00 00       	nop
+			_delay_ms(100);
+			RS485_EN_Rec();
+ 24c:	0e 94 0e 02 	call	0x41c	; 0x41c <RS485_EN_Rec>
+			Lcd_Set_Cursor(10, 0);
+ 250:	60 e0       	ldi	r22, 0x00	; 0
+ 252:	8a e0       	ldi	r24, 0x0A	; 10
+ 254:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+			Lcd_Msg("Trans");
+ 258:	80 e1       	ldi	r24, 0x10	; 16
+ 25a:	91 e0       	ldi	r25, 0x01	; 1
+ 25c:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+			Lcd_Set_Cursor(10, 1);
+ 260:	61 e0       	ldi	r22, 0x01	; 1
+ 262:	8a e0       	ldi	r24, 0x0A	; 10
+ 264:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+			char temp[2] = {Data_Slave1[i], '\0'};
+ 268:	f8 01       	movw	r30, r16
+ 26a:	80 81       	ld	r24, Z
+ 26c:	8a 87       	std	Y+10, r24	; 0x0a
+ 26e:	1b 86       	std	Y+11, r1	; 0x0b
+			Lcd_Msg(temp);
+ 270:	ce 01       	movw	r24, r28
+ 272:	0a 96       	adiw	r24, 0x0a	; 10
+ 274:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+	uint8_t Data_Slave2[] = {'D', 'E', 'F'};
+	uint8_t Data_Slave3[] = {'G', 'H', 'I'};
+	
+	while(1){
+		// G?i cho Slave 1
+		for(uint8_t i = 0; i < 3; i++){
+ 278:	f3 94       	inc	r15
+ 27a:	f2 e0       	ldi	r31, 0x02	; 2
+ 27c:	ff 15       	cp	r31, r15
+ 27e:	88 f6       	brcc	.-94     	; 0x222 <main+0x70>
+ 280:	2f ef       	ldi	r18, 0xFF	; 255
+ 282:	83 ed       	ldi	r24, 0xD3	; 211
+ 284:	90 e3       	ldi	r25, 0x30	; 48
+ 286:	21 50       	subi	r18, 0x01	; 1
+ 288:	80 40       	sbci	r24, 0x00	; 0
+ 28a:	90 40       	sbci	r25, 0x00	; 0
+ 28c:	e1 f7       	brne	.-8      	; 0x286 <main+0xd4>
+ 28e:	00 c0       	rjmp	.+0      	; 0x290 <main+0xde>
+ 290:	00 00       	nop
+			Lcd_Msg(temp);
+		}
+		_delay_ms(1000);
+		
+		// G?i cho Slave 2
+		for(uint8_t i = 0; i < 3; i++){
+ 292:	f1 2c       	mov	r15, r1
+ 294:	2c c0       	rjmp	.+88     	; 0x2ee <main+0x13c>
+			Modbus_Trans(ADDR_SLAVE2, &Data_Slave2[i], 1);
+ 296:	04 e0       	ldi	r16, 0x04	; 4
+ 298:	10 e0       	ldi	r17, 0x00	; 0
+ 29a:	0c 0f       	add	r16, r28
+ 29c:	1d 1f       	adc	r17, r29
+ 29e:	0f 0d       	add	r16, r15
+ 2a0:	11 1d       	adc	r17, r1
+ 2a2:	41 e0       	ldi	r20, 0x01	; 1
+ 2a4:	50 e0       	ldi	r21, 0x00	; 0
+ 2a6:	b8 01       	movw	r22, r16
+ 2a8:	82 e0       	ldi	r24, 0x02	; 2
+ 2aa:	0e 94 39 02 	call	0x472	; 0x472 <Modbus_Trans>
+ 2ae:	ef ef       	ldi	r30, 0xFF	; 255
+ 2b0:	f1 ee       	ldi	r31, 0xE1	; 225
+ 2b2:	24 e0       	ldi	r18, 0x04	; 4
+ 2b4:	e1 50       	subi	r30, 0x01	; 1
+ 2b6:	f0 40       	sbci	r31, 0x00	; 0
+ 2b8:	20 40       	sbci	r18, 0x00	; 0
+ 2ba:	e1 f7       	brne	.-8      	; 0x2b4 <main+0x102>
+ 2bc:	00 c0       	rjmp	.+0      	; 0x2be <main+0x10c>
+ 2be:	00 00       	nop
+			_delay_ms(100);
+			RS485_EN_Rec();
+ 2c0:	0e 94 0e 02 	call	0x41c	; 0x41c <RS485_EN_Rec>
+			Lcd_Set_Cursor(10, 0);
+ 2c4:	60 e0       	ldi	r22, 0x00	; 0
+ 2c6:	8a e0       	ldi	r24, 0x0A	; 10
+ 2c8:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+			Lcd_Msg("Trans");
+ 2cc:	80 e1       	ldi	r24, 0x10	; 16
+ 2ce:	91 e0       	ldi	r25, 0x01	; 1
+ 2d0:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+			Lcd_Set_Cursor(10, 1);
+ 2d4:	61 e0       	ldi	r22, 0x01	; 1
+ 2d6:	8a e0       	ldi	r24, 0x0A	; 10
+ 2d8:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+			char temp[2] = {Data_Slave2[i], '\0'};
+ 2dc:	f8 01       	movw	r30, r16
+ 2de:	80 81       	ld	r24, Z
+ 2e0:	8a 87       	std	Y+10, r24	; 0x0a
+ 2e2:	1b 86       	std	Y+11, r1	; 0x0b
+			Lcd_Msg(temp);
+ 2e4:	ce 01       	movw	r24, r28
+ 2e6:	0a 96       	adiw	r24, 0x0a	; 10
+ 2e8:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+			Lcd_Msg(temp);
+		}
+		_delay_ms(1000);
+		
+		// G?i cho Slave 2
+		for(uint8_t i = 0; i < 3; i++){
+ 2ec:	f3 94       	inc	r15
+ 2ee:	f2 e0       	ldi	r31, 0x02	; 2
+ 2f0:	ff 15       	cp	r31, r15
+ 2f2:	88 f6       	brcc	.-94     	; 0x296 <main+0xe4>
+ 2f4:	2f ef       	ldi	r18, 0xFF	; 255
+ 2f6:	83 ed       	ldi	r24, 0xD3	; 211
+ 2f8:	90 e3       	ldi	r25, 0x30	; 48
+ 2fa:	21 50       	subi	r18, 0x01	; 1
+ 2fc:	80 40       	sbci	r24, 0x00	; 0
+ 2fe:	90 40       	sbci	r25, 0x00	; 0
+ 300:	e1 f7       	brne	.-8      	; 0x2fa <main+0x148>
+ 302:	00 c0       	rjmp	.+0      	; 0x304 <main+0x152>
+ 304:	00 00       	nop
+			Lcd_Msg(temp);
+		}
+		_delay_ms(1000);
+		
+		// G?i cho Slave 3
+		for(uint8_t i = 0; i < 3; i++){
+ 306:	f1 2c       	mov	r15, r1
+ 308:	2c c0       	rjmp	.+88     	; 0x362 <main+0x1b0>
+			Modbus_Trans(ADDR_SLAVE3, &Data_Slave3[i], 1);
+ 30a:	07 e0       	ldi	r16, 0x07	; 7
+ 30c:	10 e0       	ldi	r17, 0x00	; 0
+ 30e:	0c 0f       	add	r16, r28
+ 310:	1d 1f       	adc	r17, r29
+ 312:	0f 0d       	add	r16, r15
+ 314:	11 1d       	adc	r17, r1
+ 316:	41 e0       	ldi	r20, 0x01	; 1
+ 318:	50 e0       	ldi	r21, 0x00	; 0
+ 31a:	b8 01       	movw	r22, r16
+ 31c:	83 e0       	ldi	r24, 0x03	; 3
+ 31e:	0e 94 39 02 	call	0x472	; 0x472 <Modbus_Trans>
+ 322:	ef ef       	ldi	r30, 0xFF	; 255
+ 324:	f1 ee       	ldi	r31, 0xE1	; 225
+ 326:	24 e0       	ldi	r18, 0x04	; 4
+ 328:	e1 50       	subi	r30, 0x01	; 1
+ 32a:	f0 40       	sbci	r31, 0x00	; 0
+ 32c:	20 40       	sbci	r18, 0x00	; 0
+ 32e:	e1 f7       	brne	.-8      	; 0x328 <main+0x176>
+ 330:	00 c0       	rjmp	.+0      	; 0x332 <main+0x180>
+ 332:	00 00       	nop
+			_delay_ms(100);
+			RS485_EN_Rec();
+ 334:	0e 94 0e 02 	call	0x41c	; 0x41c <RS485_EN_Rec>
+			Lcd_Set_Cursor(10, 0);
+ 338:	60 e0       	ldi	r22, 0x00	; 0
+ 33a:	8a e0       	ldi	r24, 0x0A	; 10
+ 33c:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+			Lcd_Msg("Trans");
+ 340:	80 e1       	ldi	r24, 0x10	; 16
+ 342:	91 e0       	ldi	r25, 0x01	; 1
+ 344:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+			Lcd_Set_Cursor(10, 1);
+ 348:	61 e0       	ldi	r22, 0x01	; 1
+ 34a:	8a e0       	ldi	r24, 0x0A	; 10
+ 34c:	0e 94 c1 00 	call	0x182	; 0x182 <Lcd_Set_Cursor>
+			char temp[2] = {Data_Slave3[i], '\0'};
+ 350:	f8 01       	movw	r30, r16
+ 352:	80 81       	ld	r24, Z
+ 354:	8a 87       	std	Y+10, r24	; 0x0a
+ 356:	1b 86       	std	Y+11, r1	; 0x0b
+			Lcd_Msg(temp);
+ 358:	ce 01       	movw	r24, r28
+ 35a:	0a 96       	adiw	r24, 0x0a	; 10
+ 35c:	0e 94 cb 00 	call	0x196	; 0x196 <Lcd_Msg>
+			Lcd_Msg(temp);
+		}
+		_delay_ms(1000);
+		
+		// G?i cho Slave 3
+		for(uint8_t i = 0; i < 3; i++){
+ 360:	f3 94       	inc	r15
+ 362:	f2 e0       	ldi	r31, 0x02	; 2
+ 364:	ff 15       	cp	r31, r15
+ 366:	88 f6       	brcc	.-94     	; 0x30a <main+0x158>
+ 368:	2f ef       	ldi	r18, 0xFF	; 255
+ 36a:	83 ed       	ldi	r24, 0xD3	; 211
+ 36c:	90 e3       	ldi	r25, 0x30	; 48
+ 36e:	21 50       	subi	r18, 0x01	; 1
+ 370:	80 40       	sbci	r24, 0x00	; 0
+ 372:	90 40       	sbci	r25, 0x00	; 0
+ 374:	e1 f7       	brne	.-8      	; 0x36e <main+0x1bc>
+ 376:	00 c0       	rjmp	.+0      	; 0x378 <main+0x1c6>
+ 378:	00 00       	nop
+ 37a:	51 cf       	rjmp	.-350    	; 0x21e <main+0x6c>
+
+0000037c <Uart_Init>:
+	if(Length_Frame < 2) return 0;
+	uint16_t Cal_CRC16 = Cal_CRC_16(Frame, Length_Frame - 2);
+	uint16_t Rec_CRC_16 = (Frame[Length_Frame - 1] << 8) | Frame[Length_Frame - 2];
+	
+	return (Cal_CRC16 == Rec_CRC_16);
+}
+ 37c:	82 95       	swap	r24
+ 37e:	92 95       	swap	r25
+ 380:	90 7f       	andi	r25, 0xF0	; 240
+ 382:	98 27       	eor	r25, r24
+ 384:	80 7f       	andi	r24, 0xF0	; 240
+ 386:	98 27       	eor	r25, r24
+ 388:	9c 01       	movw	r18, r24
+ 38a:	40 e0       	ldi	r20, 0x00	; 0
+ 38c:	50 e0       	ldi	r21, 0x00	; 0
+ 38e:	60 e0       	ldi	r22, 0x00	; 0
+ 390:	74 e2       	ldi	r23, 0x24	; 36
+ 392:	84 ef       	ldi	r24, 0xF4	; 244
+ 394:	90 e0       	ldi	r25, 0x00	; 0
+ 396:	0e 94 91 02 	call	0x522	; 0x522 <__udivmodsi4>
+ 39a:	21 50       	subi	r18, 0x01	; 1
+ 39c:	31 09       	sbc	r19, r1
+ 39e:	30 93 c5 00 	sts	0x00C5, r19	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 3a2:	20 93 c4 00 	sts	0x00C4, r18	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 3a6:	88 e1       	ldi	r24, 0x18	; 24
+ 3a8:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+ 3ac:	86 e0       	ldi	r24, 0x06	; 6
+ 3ae:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+ 3b2:	08 95       	ret
+
+000003b4 <Uart_TransByte>:
+ 3b4:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 3b8:	95 ff       	sbrs	r25, 5
+ 3ba:	fc cf       	rjmp	.-8      	; 0x3b4 <Uart_TransByte>
+ 3bc:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 3c0:	08 95       	ret
+
+000003c2 <Uart_TransArray>:
+ 3c2:	ef 92       	push	r14
+ 3c4:	ff 92       	push	r15
+ 3c6:	0f 93       	push	r16
+ 3c8:	1f 93       	push	r17
+ 3ca:	cf 93       	push	r28
+ 3cc:	df 93       	push	r29
+ 3ce:	7c 01       	movw	r14, r24
+ 3d0:	8b 01       	movw	r16, r22
+ 3d2:	c0 e0       	ldi	r28, 0x00	; 0
+ 3d4:	d0 e0       	ldi	r29, 0x00	; 0
+ 3d6:	07 c0       	rjmp	.+14     	; 0x3e6 <Uart_TransArray+0x24>
+ 3d8:	f7 01       	movw	r30, r14
+ 3da:	ec 0f       	add	r30, r28
+ 3dc:	fd 1f       	adc	r31, r29
+ 3de:	80 81       	ld	r24, Z
+ 3e0:	0e 94 da 01 	call	0x3b4	; 0x3b4 <Uart_TransByte>
+ 3e4:	21 96       	adiw	r28, 0x01	; 1
+ 3e6:	c0 17       	cp	r28, r16
+ 3e8:	d1 07       	cpc	r29, r17
+ 3ea:	b0 f3       	brcs	.-20     	; 0x3d8 <Uart_TransArray+0x16>
+ 3ec:	df 91       	pop	r29
+ 3ee:	cf 91       	pop	r28
+ 3f0:	1f 91       	pop	r17
+ 3f2:	0f 91       	pop	r16
+ 3f4:	ff 90       	pop	r15
+ 3f6:	ef 90       	pop	r14
+ 3f8:	08 95       	ret
+
+000003fa <RS485_Init>:
+ 3fa:	8a b1       	in	r24, 0x0a	; 10
+ 3fc:	84 60       	ori	r24, 0x04	; 4
+ 3fe:	8a b9       	out	0x0a, r24	; 10
+ 400:	8b b1       	in	r24, 0x0b	; 11
+ 402:	8b 7f       	andi	r24, 0xFB	; 251
+ 404:	8b b9       	out	0x0b, r24	; 11
+ 406:	08 95       	ret
+
+00000408 <RS485_EN_Trans>:
+ 408:	8b b1       	in	r24, 0x0b	; 11
+ 40a:	84 60       	ori	r24, 0x04	; 4
+ 40c:	8b b9       	out	0x0b, r24	; 11
+ 40e:	8f e3       	ldi	r24, 0x3F	; 63
+ 410:	9c e9       	ldi	r25, 0x9C	; 156
+ 412:	01 97       	sbiw	r24, 0x01	; 1
+ 414:	f1 f7       	brne	.-4      	; 0x412 <RS485_EN_Trans+0xa>
+ 416:	00 c0       	rjmp	.+0      	; 0x418 <RS485_EN_Trans+0x10>
+ 418:	00 00       	nop
+ 41a:	08 95       	ret
+
+0000041c <RS485_EN_Rec>:
+ 41c:	8b b1       	in	r24, 0x0b	; 11
+ 41e:	8b 7f       	andi	r24, 0xFB	; 251
+ 420:	8b b9       	out	0x0b, r24	; 11
+ 422:	8f e3       	ldi	r24, 0x3F	; 63
+ 424:	9c e9       	ldi	r25, 0x9C	; 156
+ 426:	01 97       	sbiw	r24, 0x01	; 1
+ 428:	f1 f7       	brne	.-4      	; 0x426 <RS485_EN_Rec+0xa>
+ 42a:	00 c0       	rjmp	.+0      	; 0x42c <RS485_EN_Rec+0x10>
+ 42c:	00 00       	nop
+ 42e:	08 95       	ret
+
+00000430 <Cal_CRC_16>:
+ 430:	dc 01       	movw	r26, r24
+ 432:	40 e0       	ldi	r20, 0x00	; 0
+ 434:	50 e0       	ldi	r21, 0x00	; 0
+ 436:	8f ef       	ldi	r24, 0xFF	; 255
+ 438:	9f ef       	ldi	r25, 0xFF	; 255
+ 43a:	17 c0       	rjmp	.+46     	; 0x46a <Cal_CRC_16+0x3a>
+ 43c:	fd 01       	movw	r30, r26
+ 43e:	e4 0f       	add	r30, r20
+ 440:	f5 1f       	adc	r31, r21
+ 442:	20 81       	ld	r18, Z
+ 444:	82 27       	eor	r24, r18
+ 446:	20 e0       	ldi	r18, 0x00	; 0
+ 448:	0c c0       	rjmp	.+24     	; 0x462 <Cal_CRC_16+0x32>
+ 44a:	80 ff       	sbrs	r24, 0
+ 44c:	07 c0       	rjmp	.+14     	; 0x45c <Cal_CRC_16+0x2c>
+ 44e:	96 95       	lsr	r25
+ 450:	87 95       	ror	r24
+ 452:	31 e0       	ldi	r19, 0x01	; 1
+ 454:	83 27       	eor	r24, r19
+ 456:	30 ea       	ldi	r19, 0xA0	; 160
+ 458:	93 27       	eor	r25, r19
+ 45a:	02 c0       	rjmp	.+4      	; 0x460 <Cal_CRC_16+0x30>
+ 45c:	96 95       	lsr	r25
+ 45e:	87 95       	ror	r24
+ 460:	2f 5f       	subi	r18, 0xFF	; 255
+ 462:	28 30       	cpi	r18, 0x08	; 8
+ 464:	90 f3       	brcs	.-28     	; 0x44a <Cal_CRC_16+0x1a>
+ 466:	4f 5f       	subi	r20, 0xFF	; 255
+ 468:	5f 4f       	sbci	r21, 0xFF	; 255
+ 46a:	46 17       	cp	r20, r22
+ 46c:	57 07       	cpc	r21, r23
+ 46e:	30 f3       	brcs	.-52     	; 0x43c <Cal_CRC_16+0xc>
+ 470:	08 95       	ret
+
+00000472 <Modbus_Trans>:
+void Modbus_Trans(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
+ 472:	cf 92       	push	r12
+ 474:	df 92       	push	r13
+ 476:	ef 92       	push	r14
+ 478:	ff 92       	push	r15
+ 47a:	0f 93       	push	r16
+ 47c:	1f 93       	push	r17
+ 47e:	cf 93       	push	r28
+ 480:	df 93       	push	r29
+ 482:	cd b7       	in	r28, 0x3d	; 61
+ 484:	de b7       	in	r29, 0x3e	; 62
+ 486:	da 95       	dec	r29
+ 488:	0f b6       	in	r0, 0x3f	; 63
+ 48a:	f8 94       	cli
+ 48c:	de bf       	out	0x3e, r29	; 62
+ 48e:	0f be       	out	0x3f, r0	; 63
+ 490:	cd bf       	out	0x3d, r28	; 61
+ 492:	18 2f       	mov	r17, r24
+ 494:	6b 01       	movw	r12, r22
+ 496:	7a 01       	movw	r14, r20
+	RS485_EN_Trans();
+ 498:	0e 94 04 02 	call	0x408	; 0x408 <RS485_EN_Trans>
+	uint8_t Frame[SIZE_OF_BUF];
+	uint16_t Length_Frame = 0;
+	Frame[Length_Frame ++] = Addr;
+ 49c:	19 83       	std	Y+1, r17	; 0x01
+	for(uint16_t i = 0; i < Length_Data; i ++){
+ 49e:	80 e0       	ldi	r24, 0x00	; 0
+ 4a0:	90 e0       	ldi	r25, 0x00	; 0
+}
+void Modbus_Trans(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
+	RS485_EN_Trans();
+	uint8_t Frame[SIZE_OF_BUF];
+	uint16_t Length_Frame = 0;
+	Frame[Length_Frame ++] = Addr;
+ 4a2:	01 e0       	ldi	r16, 0x01	; 1
+ 4a4:	10 e0       	ldi	r17, 0x00	; 0
+	for(uint16_t i = 0; i < Length_Data; i ++){
+ 4a6:	0e c0       	rjmp	.+28     	; 0x4c4 <Modbus_Trans+0x52>
+		Frame[Length_Frame ++] = Data[i];
+ 4a8:	f6 01       	movw	r30, r12
+ 4aa:	e8 0f       	add	r30, r24
+ 4ac:	f9 1f       	adc	r31, r25
+ 4ae:	20 81       	ld	r18, Z
+ 4b0:	e1 e0       	ldi	r30, 0x01	; 1
+ 4b2:	f0 e0       	ldi	r31, 0x00	; 0
+ 4b4:	ec 0f       	add	r30, r28
+ 4b6:	fd 1f       	adc	r31, r29
+ 4b8:	e0 0f       	add	r30, r16
+ 4ba:	f1 1f       	adc	r31, r17
+ 4bc:	20 83       	st	Z, r18
+void Modbus_Trans(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
+	RS485_EN_Trans();
+	uint8_t Frame[SIZE_OF_BUF];
+	uint16_t Length_Frame = 0;
+	Frame[Length_Frame ++] = Addr;
+	for(uint16_t i = 0; i < Length_Data; i ++){
+ 4be:	01 96       	adiw	r24, 0x01	; 1
+		Frame[Length_Frame ++] = Data[i];
+ 4c0:	0f 5f       	subi	r16, 0xFF	; 255
+ 4c2:	1f 4f       	sbci	r17, 0xFF	; 255
+void Modbus_Trans(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
+	RS485_EN_Trans();
+	uint8_t Frame[SIZE_OF_BUF];
+	uint16_t Length_Frame = 0;
+	Frame[Length_Frame ++] = Addr;
+	for(uint16_t i = 0; i < Length_Data; i ++){
+ 4c4:	8e 15       	cp	r24, r14
+ 4c6:	9f 05       	cpc	r25, r15
+ 4c8:	78 f3       	brcs	.-34     	; 0x4a8 <Modbus_Trans+0x36>
+		Frame[Length_Frame ++] = Data[i];
+	}
+	uint16_t CRC_16 = Cal_CRC_16(Frame, Length_Frame);
+ 4ca:	b8 01       	movw	r22, r16
+ 4cc:	ce 01       	movw	r24, r28
+ 4ce:	01 96       	adiw	r24, 0x01	; 1
+ 4d0:	0e 94 18 02 	call	0x430	; 0x430 <Cal_CRC_16>
+	Frame[Length_Frame ++] = (uint8_t) CRC_16;       // Low Byte tr??c
+ 4d4:	98 01       	movw	r18, r16
+ 4d6:	2f 5f       	subi	r18, 0xFF	; 255
+ 4d8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 4da:	e1 e0       	ldi	r30, 0x01	; 1
+ 4dc:	f0 e0       	ldi	r31, 0x00	; 0
+ 4de:	ec 0f       	add	r30, r28
+ 4e0:	fd 1f       	adc	r31, r29
+ 4e2:	e0 0f       	add	r30, r16
+ 4e4:	f1 1f       	adc	r31, r17
+ 4e6:	80 83       	st	Z, r24
+	Frame[Length_Frame ++] = (uint8_t) (CRC_16 >> 8); // High Byte sau
+ 4e8:	b8 01       	movw	r22, r16
+ 4ea:	6e 5f       	subi	r22, 0xFE	; 254
+ 4ec:	7f 4f       	sbci	r23, 0xFF	; 255
+ 4ee:	e1 e0       	ldi	r30, 0x01	; 1
+ 4f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 4f2:	ec 0f       	add	r30, r28
+ 4f4:	fd 1f       	adc	r31, r29
+ 4f6:	e2 0f       	add	r30, r18
+ 4f8:	f3 1f       	adc	r31, r19
+ 4fa:	90 83       	st	Z, r25
+	Uart_TransArray(Frame, Length_Frame);
+ 4fc:	ce 01       	movw	r24, r28
+ 4fe:	01 96       	adiw	r24, 0x01	; 1
+ 500:	0e 94 e1 01 	call	0x3c2	; 0x3c2 <Uart_TransArray>
+}
+ 504:	d3 95       	inc	r29
+ 506:	0f b6       	in	r0, 0x3f	; 63
+ 508:	f8 94       	cli
+ 50a:	de bf       	out	0x3e, r29	; 62
+ 50c:	0f be       	out	0x3f, r0	; 63
+ 50e:	cd bf       	out	0x3d, r28	; 61
+ 510:	df 91       	pop	r29
+ 512:	cf 91       	pop	r28
+ 514:	1f 91       	pop	r17
+ 516:	0f 91       	pop	r16
+ 518:	ff 90       	pop	r15
+ 51a:	ef 90       	pop	r14
+ 51c:	df 90       	pop	r13
+ 51e:	cf 90       	pop	r12
+ 520:	08 95       	ret
+
+00000522 <__udivmodsi4>:
+ 522:	a1 e2       	ldi	r26, 0x21	; 33
+ 524:	1a 2e       	mov	r1, r26
+ 526:	aa 1b       	sub	r26, r26
+ 528:	bb 1b       	sub	r27, r27
+ 52a:	fd 01       	movw	r30, r26
+ 52c:	0d c0       	rjmp	.+26     	; 0x548 <__udivmodsi4_ep>
+
+0000052e <__udivmodsi4_loop>:
+ 52e:	aa 1f       	adc	r26, r26
+ 530:	bb 1f       	adc	r27, r27
+ 532:	ee 1f       	adc	r30, r30
+ 534:	ff 1f       	adc	r31, r31
+ 536:	a2 17       	cp	r26, r18
+ 538:	b3 07       	cpc	r27, r19
+ 53a:	e4 07       	cpc	r30, r20
+ 53c:	f5 07       	cpc	r31, r21
+ 53e:	20 f0       	brcs	.+8      	; 0x548 <__udivmodsi4_ep>
+ 540:	a2 1b       	sub	r26, r18
+ 542:	b3 0b       	sbc	r27, r19
+ 544:	e4 0b       	sbc	r30, r20
+ 546:	f5 0b       	sbc	r31, r21
+
+00000548 <__udivmodsi4_ep>:
+ 548:	66 1f       	adc	r22, r22
+ 54a:	77 1f       	adc	r23, r23
+ 54c:	88 1f       	adc	r24, r24
+ 54e:	99 1f       	adc	r25, r25
+ 550:	1a 94       	dec	r1
+ 552:	69 f7       	brne	.-38     	; 0x52e <__udivmodsi4_loop>
+ 554:	60 95       	com	r22
+ 556:	70 95       	com	r23
+ 558:	80 95       	com	r24
+ 55a:	90 95       	com	r25
+ 55c:	9b 01       	movw	r18, r22
+ 55e:	ac 01       	movw	r20, r24
+ 560:	bd 01       	movw	r22, r26
+ 562:	cf 01       	movw	r24, r30
+ 564:	08 95       	ret
+
+00000566 <_exit>:
+ 566:	f8 94       	cli
+
+00000568 <__stop_program>:
+ 568:	ff cf       	rjmp	.-2      	; 0x568 <__stop_program>

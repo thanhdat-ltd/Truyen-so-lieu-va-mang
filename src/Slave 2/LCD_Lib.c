@@ -64,3 +64,6 @@ void Lcd_Value(float Data) {
 	snprintf(buffer, sizeof(buffer), "%.2f", Data);
 	Lcd_Msg(buffer);
 }
+void Lcd_Char(char ch){
+	
+}
