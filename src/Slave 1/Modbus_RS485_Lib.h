@@ -26,7 +26,7 @@ void RS485_Init();
 void RS485_EN_Trans();
 void RS485_EN_Rec();
 void Modbus_Trans(uint8_t Addr, uint8_t *Data, uint16_t Length_Data);
-void Modbus_Rec(uint8_t Addr, uint8_t *Data, uint16_t Length_Data);
+uint8_t Modbus_Rec(uint8_t Addr, uint8_t *Data, uint16_t Length_Data);
 
 
 #endif /* MODBUS_RS485_LIB_H_ */

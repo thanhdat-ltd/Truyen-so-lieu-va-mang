@@ -23,13 +23,13 @@ int main(){
 	Lcd_Msg("Data: ");
 	
 	// Truy?n ký t? cho các slave
-	uint8_t Data_Slave1[] = {'A', 'B', 'C'};
-	uint8_t Data_Slave2[] = {'D', 'E', 'F'};
-	uint8_t Data_Slave3[] = {'G', 'H', 'I'};
+	uint8_t Data_Slave1[] = {'H', 'e', 'l','l','o','S','l','a','v','1'};
+	uint8_t Data_Slave2[] = {'H', 'e', 'l','l','o','S','l','a','v','2'};
+	uint8_t Data_Slave3[] = {'H', 'e', 'l','l','o','S','l','a','v','3'};
 	
 	while(1){
 		// G?i cho Slave 1
-		for(uint8_t i = 0; i < 3; i++){
+		for(uint8_t i = 0; i < 10; i++){
 			Modbus_Trans(ADDR_SLAVE1, &Data_Slave1[i], 1);
 			_delay_ms(100);
 			RS485_EN_Rec();
@@ -42,7 +42,7 @@ int main(){
 		_delay_ms(1000);
 		
 		// G?i cho Slave 2
-		for(uint8_t i = 0; i < 3; i++){
+		for(uint8_t i = 0; i < 10; i++){
 			Modbus_Trans(ADDR_SLAVE2, &Data_Slave2[i], 1);
 			_delay_ms(100);
 			RS485_EN_Rec();
@@ -55,7 +55,7 @@ int main(){
 		_delay_ms(1000);
 		
 		// G?i cho Slave 3
-		for(uint8_t i = 0; i < 3; i++){
+		for(uint8_t i = 0; i < 10; i++){
 			Modbus_Trans(ADDR_SLAVE3, &Data_Slave3[i], 1);
 			_delay_ms(100);
 			RS485_EN_Rec();

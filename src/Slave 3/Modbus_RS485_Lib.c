@@ -77,19 +77,21 @@ void Modbus_Trans(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
 	Frame[Length_Frame ++] = (uint8_t) (CRC_16 >> 8); // High Byte sau
 	Uart_TransArray(Frame, Length_Frame);
 }
-void Modbus_Rec(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
+
+uint8_t Modbus_Rec(uint8_t Addr, uint8_t *Data, uint16_t Length_Data){
 	RS485_EN_Rec();
 	uint8_t Frame[SIZE_OF_BUF];
 	uint16_t Length_Frame = Length_Data + 3;
-	
+
 	Uart_RecArray(Frame, Length_Frame);
+
 	if ((Frame[0] == Addr) && (Check_CRC_16(Frame, Length_Frame))) {
-		for(uint16_t i = 0; i < Length_Frame - 3; i ++){
+		for(uint16_t i = 0; i < Length_Data; i++){
 			Data[i] = Frame[i + 1];
 		}
-		return;
-		} else{
+		return 1;
+		} else {
 		*Data = DATA_ERROR;
-		return;
+		return 0;
 	}
 }
